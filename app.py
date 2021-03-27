@@ -1,7 +1,6 @@
 import pandas as pd
 from bs4 import BeautifulSoup
 import requests
-import pickle
 import streamlit as st
 
 html = """
@@ -12,12 +11,11 @@ html = """
 st.markdown(html, unsafe_allow_html=True)
 st.subheader('    ') 
 
-pickle_out = open("col.pickle","rb")
-col = pickle.load(pickle_out)
-pickle_out.close()
+col = ['English (Communication Skills)','Punjabi (Compulsory)','Hindi','Sociology','Cosmetology','History','Political Science',
+ 'Punjabi Literature','Music (Vocal)','Physical Education','English Literature','Computer Applications','Economics','Mathematics','Total']
 
 columns2 = col.copy() 
-del columns2[-2:]
+#del columns2[-2:]
 
 df = pd.DataFrame(columns=columns2)
 
@@ -66,8 +64,3 @@ if button:
     
     df.to_excel('Result.xlsx')
     st.markdown("""<h2 style='color:green;'><b>DONE !!</b></h2>""", unsafe_allow_html=True)
- 
-
-   
-    
-
